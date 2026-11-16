@@ -259,7 +259,7 @@ def page(lang, kind, title, body):
 {alts}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&family=VT323&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&family=VT323&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{up}style.css">
 </head>
 <body>
@@ -284,7 +284,7 @@ def page(lang, kind, title, body):
 </body>
 </html>
 '''
-here = os.path.dirname(os.path.abspath(__file__)); docs = os.path.join(here, "docs")
+here = os.path.dirname(os.path.dirname(os.path.abspath(__file__))); docs = os.path.join(here, "docs")
 for lang, _ in LANGS:
     t = T[lang]; up = "" if lang == "en" else "../"; d = docs if lang == "en" else os.path.join(docs, lang); os.makedirs(d, exist_ok=True)
     shots = "".join(f'<img src="{up}assets/shot{i}.jpg" alt="" loading="lazy">' for i in (1, 2, 3, 4))
