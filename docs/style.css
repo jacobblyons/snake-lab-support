@@ -30,7 +30,7 @@ body {
 .hud .name { display: flex; align-items: center; gap: 14px; min-width: 0; }
 .hud img { width: 56px; height: 56px; border-radius: 13px; image-rendering: pixelated; flex: none; }
 .hud small { display: block; font-family: var(--pixel); font-size: 13px; letter-spacing: .12em; color: var(--feed); }
-.hud h1 { margin: 0; font-family: var(--pixel); font-size: clamp(26px, 6vw, 40px); line-height: 1; color: var(--plastic); letter-spacing: .02em; text-wrap: balance; }
+.hud h1 { margin: 0; font-family: var(--pixel); font-weight: 400; font-size: clamp(26px, 6vw, 40px); line-height: 1; color: var(--plastic); letter-spacing: .02em; text-wrap: balance; }
 nav.pages { display: flex; gap: 8px; flex-wrap: wrap; }
 
 /* Console keys: the page links and the languages. */
@@ -54,7 +54,7 @@ nav.langs .key { font-size: 13px; padding: 4px 8px 3px; }
 .screen p:last-child { margin-bottom: 0; }
 .screen strong { color: var(--plastic); font-weight: normal; }
 .screen a { color: var(--plastic); text-decoration-thickness: 1px; text-underline-offset: 3px; }
-.screen h2 { font-family: var(--pixel); font-size: 18px; letter-spacing: .06em; margin: 26px 0 8px; text-wrap: balance; }
+.screen h2 { font-family: var(--pixel); font-weight: 400; font-size: 18px; letter-spacing: .06em; margin: 26px 0 8px; text-wrap: balance; }
 .screen h2:first-child { margin-top: 0; }
 .screen h2:nth-of-type(5n+1) { color: var(--gather); }
 .screen h2:nth-of-type(5n+2) { color: var(--compete); }
