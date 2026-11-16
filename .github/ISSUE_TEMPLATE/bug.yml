@@ -1,0 +1,26 @@
+name: Bug report
+description: Something in Snake Lab doesn't work the way it should.
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you did, what you saw, and what you expected instead.
+    validations:
+      required: true
+  - type: input
+    id: where
+    attributes:
+      label: Where in the game?
+      description: For example "stage 4, TREAD", "Endless (Modern)", or "the scores screen".
+  - type: input
+    id: device
+    attributes:
+      label: iPhone model and iOS version
+      placeholder: iPhone 15, iOS 26.1
+  - type: input
+    id: version
+    attributes:
+      label: Snake Lab version
+      description: Shown in Settings, or in the App Store under Version History.

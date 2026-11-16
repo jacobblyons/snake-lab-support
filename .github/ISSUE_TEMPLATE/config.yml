@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Common questions
+    url: https://jacobblyons.github.io/snake-lab-support/support.html
+    about: How runs work, Classic vs Modern, jumping, and where scores are kept.
+  - name: Privacy policy
+    url: https://jacobblyons.github.io/snake-lab-support/privacy.html
+    about: What the app collects (nothing).

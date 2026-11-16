@@ -1,0 +1,10 @@
+name: Idea or request
+description: A stage, ability, mode or change you'd like to see.
+labels: [idea]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: Your idea
+    validations:
+      required: true
