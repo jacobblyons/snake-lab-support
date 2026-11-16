@@ -287,11 +287,12 @@ def page(lang, kind, title, body):
 here = os.path.dirname(os.path.dirname(os.path.abspath(__file__))); docs = os.path.join(here, "docs")
 for lang, _ in LANGS:
     t = T[lang]; up = "" if lang == "en" else "../"; d = docs if lang == "en" else os.path.join(docs, lang); os.makedirs(d, exist_ok=True)
-    shots = "".join(f'<img src="{up}assets/shot{i}.jpg" alt="" loading="lazy">' for i in (1, 2, 3, 4))
+    media = up + "assets/" + ("" if lang == "en" else lang + "/")  # each language's own film and screenshots
+    shots = "".join(f'<img src="{media}shot{i}.jpg" alt="" loading="lazy">' for i in (1, 2, 3, 4))
     home = f'''      <div class="hero">
         <p class="lead">{t["lead"]}</p>
         <p>{t["pitch"]}</p>
-        <div class="media"><video src="{up}assets/film.mp4" poster="{up}assets/poster.jpg" muted loop playsinline autoplay></video>{shots}</div>
+        <div class="media"><video src="{media}film.mp4" poster="{media}poster.jpg" muted loop playsinline autoplay></video>{shots}</div>
         <p><strong>{t["avail"]}</strong></p>
       </div>'''
     sec = lambda h, p: f'      <h2>{h}</h2><p>{p}</p>'
