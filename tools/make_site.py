@@ -287,7 +287,7 @@ def link(name, url): return f'<a href="{url}">{name}</a>'
 WHO = ["Jacob Lyons",
        link("flakdeau19", "https://flakdeau19.itch.io/pixel-art-texture-pack-256x256") + " (Pixel Art Texture Pack)",
        link("SoundFellas", "https://soundfellas.com/") + " (Technology Labs)",
-       " · ".join([link("Not Jam", "https://not-jam.itch.io/") + " (Not Jam UI)", link("somepx", "https://somepx.itch.io/pixel-font-awesome") + " (Awesome 9)",
+       "<br>".join([link("Not Jam", "https://not-jam.itch.io/") + " (Not Jam UI)", link("somepx", "https://somepx.itch.io/pixel-font-awesome") + " (Awesome 9)",
                    link("TakWolf", "https://github.com/TakWolf/fusion-pixel-font") + " (Fusion Pixel)"])]
 LABEL = {"index": "LAB", "support": "SUPPORT", "privacy": "PRIVACY"}
 def page(lang, kind, title, body):
