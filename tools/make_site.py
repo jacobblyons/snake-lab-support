@@ -265,6 +265,30 @@ T["zh-Hant"] = dict(home="首頁", support="支援", privacy="隱私", privacy_t
       ("我的分數保存在哪裡？", "保存在你的裝置上，如果已登入，也會保存在你的 iCloud 帳號中。登入 Game Center 即可讓最高分登上全球排行榜。")],
  h_fine="附註", fine='Snake Lab 沒有廣告，也沒有內購。它不收集個人資料，只傳送匿名的遊戲統計；請參閱<a href="privacy.html">隱私權政策</a>。')
 
+# CREDITS on the support page: the heading and roles as the game's own CREDITS screen says them, then
+# the sentence on Fusion Pixel's license ({ofl} is the link to it).
+C = {
+    "en": ("CREDITS", "A GAME BY", "TEXTURES", "SOUNDS", "FONTS", "Fusion Pixel is used under the {ofl}; its license ships inside the app."),
+    "es": ("CRÉDITOS", "UN JUEGO DE", "TEXTURAS", "SONIDOS", "FUENTES", "Fusion Pixel se usa bajo la {ofl}; su licencia viene dentro de la app."),
+    "fr": ("CRÉDITS", "UN JEU DE", "TEXTURES", "SONS", "POLICES", "Fusion Pixel est utilisée sous la {ofl} ; sa licence est fournie dans l’app."),
+    "de": ("MITWIRKENDE", "EIN SPIEL VON", "TEXTUREN", "TÖNE", "SCHRIFTEN", "Fusion Pixel wird unter der {ofl} verwendet; die Lizenz liegt der App bei."),
+    "it": ("RICONOSCIMENTI", "UN GIOCO DI", "TEXTURE", "SUONI", "FONT", "Fusion Pixel è usato con la {ofl}; la licenza è inclusa nell’app."),
+    "pt-BR": ("CRÉDITOS", "UM JOGO DE", "TEXTURAS", "SONS", "FONTES", "A Fusion Pixel é usada sob a {ofl}; a licença acompanha o app."),
+    "pl": ("TWÓRCY", "GRA AUTORSTWA", "TEKSTURY", "DŹWIĘKI", "CZCIONKI", "Fusion Pixel jest używany na licencji {ofl}; jej tekst jest dołączony do aplikacji."),
+    "tr": ("EMEĞİ GEÇENLER", "YAPIMCI", "DOKULAR", "SESLER", "YAZI TİPLERİ", "Fusion Pixel, {ofl} ile kullanılır; lisans metni uygulamanın içindedir."),
+    "ru": ("АВТОРЫ", "ИГРА ОТ", "ТЕКСТУРЫ", "ЗВУКИ", "ШРИФТЫ", "Fusion Pixel используется по лицензии {ofl}; её текст входит в приложение."),
+    "ja": ("クレジット", "ゲーム制作", "テクスチャ", "サウンド", "フォント", "Fusion Pixel は {ofl} のもとで使用しています。ライセンス文はアプリに同梱しています。"),
+    "ko": ("크레딧", "제작", "텍스처", "효과음", "글꼴", "Fusion Pixel은 {ofl}에 따라 사용합니다. 라이선스 전문은 앱에 포함되어 있습니다."),
+    "zh-Hans": ("制作人员", "制作", "纹理", "音效", "字体", "Fusion Pixel 依据 {ofl} 使用，许可证全文随应用附带。"),
+    "zh-Hant": ("製作人員", "製作", "材質", "音效", "字型", "Fusion Pixel 依據 {ofl} 使用，授權條款全文隨應用程式附帶。"),
+}
+OFL = '<a href="https://github.com/TakWolf/fusion-pixel-font/blob/master/LICENSE-OFL">SIL Open Font License 1.1</a>'
+def link(name, url): return f'<a href="{url}">{name}</a>'
+WHO = ["Jacob Lyons",
+       link("flakdeau19", "https://flakdeau19.itch.io/pixel-art-texture-pack-256x256") + " (Pixel Art Texture Pack)",
+       link("SoundFellas", "https://soundfellas.com/") + " (Technology Labs)",
+       " · ".join([link("Not Jam", "https://not-jam.itch.io/") + " (Not Jam UI)", link("somepx", "https://somepx.itch.io/pixel-font-awesome") + " (Awesome 9)",
+                   link("TakWolf", "https://github.com/TakWolf/fusion-pixel-font") + " (Fusion Pixel)"])]
 LABEL = {"index": "LAB", "support": "SUPPORT", "privacy": "PRIVACY"}
 def page(lang, kind, title, body):
     up = "" if lang == "en" else "../"
@@ -326,7 +350,9 @@ for lang, _ in LANGS:
                       sec(t["h_children"], t["children"]), sec(t["h_changes"], t["changes"]), sec(t["h_contact"], t["contact"].format(issues=ISSUES)),
                       f'      <p class="small">{t["date"]}</p>'])
     sup = "\n".join([sec(t["h_bug"], t["bug"].format(issues=ISSUES)), f'      <h2>{t["h_faq"]}</h2>'] +
-                    [f'      <p class="qa"><strong>{html.escape(q)}</strong>{html.escape(a)}</p>' for q, a in t["faq"]] + [sec(t["h_fine"], t["fine"])])
+                    [f'      <p class="qa"><strong>{html.escape(q)}</strong>{html.escape(a)}</p>' for q, a in t["faq"]] + [sec(t["h_fine"], t["fine"])] +
+                    [f'      <h2>{C[lang][0]}</h2>'] + [f'      <p class="qa"><strong>{role}</strong>{who}</p>' for role, who in zip(C[lang][1:5], WHO)] +
+                    [f'      <p class="small">{C[lang][5].format(ofl=OFL)}</p>'])
     open(os.path.join(d, "index.html"), "w").write(page(lang, "index", "SNAKE LAB", home))
     open(os.path.join(d, "privacy.html"), "w").write(page(lang, "privacy", t["privacy_title"], priv))
     open(os.path.join(d, "support.html"), "w").write(page(lang, "support", t["support"], sup))
